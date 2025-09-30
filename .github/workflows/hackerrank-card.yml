@@ -1,33 +1,35 @@
-name: Generate HackerRank Stats Card
+name: Update HackerRank Stats
 
 on:
-  push:
-    branches:
-      - main
-      - master
   schedule:
-    - cron: '0 2 * * *' # runs daily at 02:00 UTC
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write   # 👈 this allows pushing commits
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true  # 👈 needed for pushing back
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests beautifulsoup4
+          pip install requests
 
-      - name: Generate HackerRank card
-        run: python Scripts/generate_hackerrank_card.py
+      - name: Run update script
+        run: |
+          python Scripts/generate_hackerrank_card.py.py
 
       - name: Commit and push SVG if changed
         run: |
