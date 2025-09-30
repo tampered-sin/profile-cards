@@ -1,0 +1,41 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="160" viewBox="0 0 540 160" role="img" aria-labelledby="title">
+  <title>HackerRank stats for tenkunga911</title>
+  <rect rx="15" width="100%" height="100%" fill="#0e6a4a"/>
+  <g transform="translate(20,20)" fill="#ffffff" font-family="Segoe UI, Roboto, Helvetica, sans-serif">
+
+    <!-- Username -->
+    <text x="0" y="0" font-size="22" font-weight="700">tenkunga911</text>
+    <a href="https://www.hackerrank.com/tenkunga911" target="_blank" rel="noopener noreferrer">
+      <text x="0" y="30" font-size="12" opacity="0.9">View HackerRank profile</text>
+    </a>
+
+    <!-- Stats cards -->
+    <g transform="translate(0,50)">
+      <!-- Problems Solved -->
+      <rect x="0" y="0" width="160" height="70" rx="12" fill="#1b8e5f" opacity="0.85"/>
+      <text x="12" y="14" font-size="14">✅</text>
+      <text x="32" y="24" font-size="12" fill="#ffffff" font-weight="500">Problems Solved</text>
+      <text x="32" y="52" font-size="24" font-weight="700">—</text>
+
+      <!-- Global Rank -->
+      <g transform="translate(190,0)">
+        <rect x="0" y="0" width="160" height="70" rx="12" fill="#1b8e5f" opacity="0.85"/>
+        <text x="12" y="14" font-size="14">🏆</text>
+        <text x="32" y="24" font-size="12" fill="#ffffff" font-weight="500">Global Rank</text>
+        <text x="32" y="52" font-size="24" font-weight="700">—</text>
+      </g>
+
+      <!-- Badges -->
+      <g transform="translate(380,0)">
+        <rect x="0" y="0" width="160" height="70" rx="12" fill="#1b8e5f" opacity="0.85"/>
+        <text x="12" y="14" font-size="14">🎖️</text>
+        <text x="32" y="24" font-size="12" fill="#ffffff" font-weight="500">Badges</text>
+        <text x="32" y="52" font-size="24" font-weight="700">—</text>
+      </g>
+    </g>
+
+    <!-- Footer timestamp -->
+    <text x="0" y="145" font-size="10" fill="#ffffff" opacity="0.7">Updated: 2025-09-30 09:17 UTC</text>
+  </g>
+</svg>

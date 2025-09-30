@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate a compact HackerRank stats SVG card for 'tenkunga911',
-optimized for GitHub README badge style (single row).
+Generate a modern HackerRank stats SVG card with icons for 'tenkunga911'.
 """
 
 import os
@@ -73,45 +72,50 @@ def build_svg(stats):
     profile_url = stats["profile_url"]
     generated_time = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
 
-    # Inline icons (small for compact layout)
-    check_icon = """<text x="4" y="14" font-size="14">✅</text>"""
-    trophy_icon = """<text x="4" y="14" font-size="14">🏆</text>"""
-    medal_icon = """<text x="4" y="14" font-size="14">🎖️</text>"""
+    # Inline SVG icons
+    check_icon = """<text x="12" y="14" font-size="14">✅</text>"""
+    trophy_icon = """<text x="12" y="14" font-size="14">🏆</text>"""
+    medal_icon = """<text x="12" y="14" font-size="14">🎖️</text>"""
 
     svg = dedent(f"""
-    <svg xmlns="http://www.w3.org/2000/svg" width="540" height="80" viewBox="0 0 540 80" role="img" aria-labelledby="title">
+    <svg xmlns="http://www.w3.org/2000/svg" width="540" height="160" viewBox="0 0 540 160" role="img" aria-labelledby="title">
       <title>HackerRank stats for {user}</title>
-      <rect rx="10" width="100%" height="100%" fill="#0e6a4a"/>
-      <g transform="translate(10,10)" fill="#ffffff" font-family="Segoe UI, Roboto, Helvetica, sans-serif">
+      <rect rx="15" width="100%" height="100%" fill="#0e6a4a"/>
+      <g transform="translate(20,20)" fill="#ffffff" font-family="Segoe UI, Roboto, Helvetica, sans-serif">
 
         <!-- Username -->
-        <text x="0" y="14" font-size="16" font-weight="700">{user}</text>
+        <text x="0" y="0" font-size="22" font-weight="700">{user}</text>
+        <a href="{profile_url}" target="_blank" rel="noopener noreferrer">
+          <text x="0" y="30" font-size="12" opacity="0.9">View HackerRank profile</text>
+        </a>
 
-        <!-- Stats boxes -->
-        <g transform="translate(0,30)">
+        <!-- Stats cards -->
+        <g transform="translate(0,50)">
           <!-- Problems Solved -->
-          <rect x="0" y="0" width="160" height="40" rx="10" fill="#1b8e5f" opacity="0.85"/>
+          <rect x="0" y="0" width="160" height="70" rx="12" fill="#1b8e5f" opacity="0.85"/>
           {check_icon}
-          <text x="24" y="15" font-size="12" fill="#ffffff" font-weight="500">Problems Solved</text>
-          <text x="24" y="30" font-size="16" font-weight="700">{solved}</text>
+          <text x="32" y="24" font-size="12" fill="#ffffff" font-weight="500">Problems Solved</text>
+          <text x="32" y="52" font-size="24" font-weight="700">{solved}</text>
 
           <!-- Global Rank -->
-          <g transform="translate(180,0)">
-            <rect x="0" y="0" width="160" height="40" rx="10" fill="#1b8e5f" opacity="0.85"/>
+          <g transform="translate(190,0)">
+            <rect x="0" y="0" width="160" height="70" rx="12" fill="#1b8e5f" opacity="0.85"/>
             {trophy_icon}
-            <text x="24" y="15" font-size="12" fill="#ffffff" font-weight="500">Global Rank</text>
-            <text x="24" y="30" font-size="16" font-weight="700">{rank}</text>
+            <text x="32" y="24" font-size="12" fill="#ffffff" font-weight="500">Global Rank</text>
+            <text x="32" y="52" font-size="24" font-weight="700">{rank}</text>
           </g>
 
           <!-- Badges -->
-          <g transform="translate(360,0)">
-            <rect x="0" y="0" width="160" height="40" rx="10" fill="#1b8e5f" opacity="0.85"/>
+          <g transform="translate(380,0)">
+            <rect x="0" y="0" width="160" height="70" rx="12" fill="#1b8e5f" opacity="0.85"/>
             {medal_icon}
-            <text x="24" y="15" font-size="12" fill="#ffffff" font-weight="500">Badges</text>
-            <text x="24" y="30" font-size="16" font-weight="700">{badges}</text>
+            <text x="32" y="24" font-size="12" fill="#ffffff" font-weight="500">Badges</text>
+            <text x="32" y="52" font-size="24" font-weight="700">{badges}</text>
           </g>
         </g>
 
+        <!-- Footer timestamp -->
+        <text x="0" y="145" font-size="10" fill="#ffffff" opacity="0.7">Updated: {generated_time}</text>
       </g>
     </svg>
     """)
@@ -129,7 +133,7 @@ def main():
     with open(OUT_FILE, "w", encoding="utf-8") as f:
         f.write(svg)
 
-    print(f"Wrote compact HackerRank stats card to {OUT_FILE}")
+    print(f"Wrote HackerRank stats card with icons to {OUT_FILE}")
 
 if __name__ == "__main__":
     main()
