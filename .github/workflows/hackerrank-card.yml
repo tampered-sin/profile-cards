@@ -27,7 +27,7 @@ jobs:
           pip install requests beautifulsoup4
 
       - name: Generate HackerRank card
-        run: python scripts/generate_hackerrank_card.py
+        run: python Scripts/generate_hackerrank_card.py
 
       - name: Commit and push SVG if changed
         run: |
