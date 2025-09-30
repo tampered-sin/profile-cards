@@ -1,0 +1,41 @@
+name: Generate HackerRank Stats Card
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  schedule:
+    - cron: '0 2 * * *' # runs daily at 02:00 UTC
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      - name: Generate HackerRank card
+        run: python scripts/generate_hackerrank_card.py
+
+      - name: Commit and push SVG if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git status --porcelain | grep -q "assets/hackerrank_card.svg"; then
+            git add assets/hackerrank_card.svg
+            git commit -m "chore: update HackerRank stats card"
+            git push
+          else
+            echo "No changes to commit"
